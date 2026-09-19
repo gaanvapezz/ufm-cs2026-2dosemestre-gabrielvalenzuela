@@ -30,7 +30,7 @@ def opcion_consultar ():
     datos = obtener_datos(simbolo)
 
     if not datos: 
-        print("\n No se encontraron datos para ese símbolo - CONSULTA DE BOLSA DE VALORES")
+        print("\n No se encontraron datos para ese símbolo búrsatil - CONSULTA DE BOLSA DE VALORES")
         return
 
     print(f"\n--- Cotización de {datos['01. symbol'].upper()} ---")
@@ -43,12 +43,11 @@ def opcion_consultar ():
     
 
 def opcion_variacion():
-    """Opción 2: muestra si la acción subió o bajó hoy (usa una sola consulta)."""
     simbolo = input("Ingresa el símbolo bursátil: ").lower()
     datos = obtener_datos(simbolo)
 
     if not datos:
-        print("\nNo se encontraron datos para ese símbolo.")
+        print("\nNo se encontraron datos para ese símbolo bursátil.")
         return
 
     cambio = float(datos["09. change"])
@@ -67,12 +66,19 @@ def opcion_variacion():
 
 
 def opcion_alerta ():
-    simbolo = input("Símbolo a verificar: ").upper()
-    umbral = float(input("Precio objetivo: "))
+    simbolo = input("Símbolo búrsatil a verificar: ").upper()
+
+    while True: 
+        entrada_umbral = input("\nPrecio objetivo: ")
+        try: 
+            umbral = float(entrada_umbral)
+            break
+        except ValueError:
+            print("\nEso no es un valor númerico. Ingresa un número como valor")
 
     datos = obtener_datos(simbolo)
     if not datos: 
-        print("\n No se encontraron datos para dicho símbolo.")
+        print("\n No se encontraron datos para dicho símbolo búrsatil.")
         return
     precio_actual = float(datos["05. price"])
     print(f"\nPrecio actual de {datos['01. symbol']}: ${precio_actual}")
@@ -90,7 +96,7 @@ def menu ():
         print("\n=========== MENÚ - CONSULTA DE BOLSA DE VALORES ===========")
         print("\n1. Consultar cotización de una acción" \
         "      \n2. Ver variación del día" \
-        "      \n3. Verificar alterta de precio" \
+        "      \n3. Verificar alerta de precio" \
         "      \n4. Salir del programa")
 
         user_opcion = (input("\nEscoge una opción: "))
