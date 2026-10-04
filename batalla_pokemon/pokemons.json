@@ -1,0 +1,6 @@
+[
+    {"nombre": "Pikachu", "tipo": "electrico", "hp": 60, "ad": 15},
+    {"nombre": "Chikorita",  "tipo": "planta",    "hp": 45, "ad": 10},
+    {"nombre": "Charmander", "tipo": "fuego",     "hp": 40, "ad": 10},
+    {"nombre": "Froakie",    "tipo": "agua",      "hp": 40, "ad": 20}
+]
